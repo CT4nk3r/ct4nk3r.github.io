@@ -1,0 +1,39 @@
+---
+title: "CT4nk3r"
+description: "AI tooling, automation, self-hosted systems, and practical open-source software."
+location: "Veszprem, Hungary"
+email: "ct4nk3r@gmail.com"
+github: "https://github.com/CT4nk3r"
+tagline: "AI tooling, automation, and open-source projects with real utility."
+intro: "I build developer tools, AI-assisted workflows, and practical software around systems I actually use. The projects I care about most usually sit somewhere between editor tooling, automation, self-hosted infrastructure, and product-minded side projects."
+enterprise: "In enterprise environments I have worked on internal developer tooling, AI-assisted workflows, automation, and platform-facing engineering improvements used across teams. That included contributing to shared tools, improving internal integrations, tightening documentation and process flows, and helping make internal systems easier to operate, extend, and trust. The common thread was reducing manual work, improving developer experience, and making internal workflows more reliable and repeatable."
+featured:
+  - name: "arrstack-mcp"
+    url: "https://github.com/CT4nk3r/arrstack-mcp"
+    summary: "An MCP server that gives AI assistants configurable access to homelab services like Sonarr, Radarr, Jellyfin, qBittorrent, Prowlarr, and more."
+    bullets:
+      - "Built around real self-hosted automation workflows"
+      - "Python-based integration layer with practical deployment in mind"
+      - "Strong example of useful agent-era infrastructure"
+  - name: "PerplexityPilot"
+    url: "https://github.com/CT4nk3r/PerplexityPilot"
+    summary: "A VS Code extension for Perplexity-powered inline completions, edit actions, and lightweight coding assistance."
+    bullets:
+      - "Focused on coding flow instead of chat-first UX"
+      - "Editor tooling with model switching and practical interaction design"
+      - "Built to feel lightweight inside everyday development work"
+  - name: "QRCrafter"
+    url: "https://github.com/CT4nk3r/QRCrafter"
+    summary: "A privacy-first QR generator and decoder for mobile, web, and desktop."
+    bullets:
+      - "Built to avoid tracking-heavy QR tools and proxy links"
+      - "Cross-platform product with a clear reason to exist"
+      - "Offline-first generation and decoding"
+opensource:
+  - name: "lgogdownloader"
+    summary: "Extended my fork with terminal UI work and built automation around it to maintain a complete backup of my GOG library inside a self-hosted GameVault setup on my home server."
+  - name: "WinAppDriver"
+    summary: "Investigated and documented a concrete UI Recorder issue around double-click and context-click behavior, then proposed an upstream fix."
+  - name: "Other upstream work"
+    summary: "Smaller contributions include improvements and fixes around tools like opencode-mobile and claudian."
+---

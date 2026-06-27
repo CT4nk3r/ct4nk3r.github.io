@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CT4nk3r</title>
-  <meta name="description" content="AI tooling, automation, self-hosted systems, and practical open-source software.">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.description }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -215,15 +215,11 @@
         <a href="#enterprise">Enterprise</a>
         <a href="#contact">Contact</a>
       </nav>
-      <p class="eyebrow">AI tooling, automation, and open-source projects with real utility.</p>
-      <h1>CT4nk3r</h1>
-      <p class="lead">
-        I build developer tools, AI-assisted workflows, and practical software around systems I actually use.
-        The projects I care about most usually sit somewhere between editor tooling, automation,
-        self-hosted infrastructure, and product-minded side projects.
-      </p>
+      <p class="eyebrow">{{ .Params.tagline }}</p>
+      <h1>{{ .Title }}</h1>
+      <p class="lead">{{ .Params.intro }}</p>
       <ul class="meta">
-        <li>Veszprem, Hungary</li>
+        <li>{{ .Params.location }}</li>
         <li>Python / TypeScript / Kotlin</li>
         <li>AI tooling / automation / self-hosted systems</li>
       </ul>
@@ -233,38 +229,18 @@
       <p class="eyebrow">Selected work</p>
       <h2>Original projects worth opening first.</h2>
       <div class="grid">
-        <article class="card">
-          <h3>arrstack-mcp</h3>
-          <p>An MCP server that gives AI assistants configurable access to homelab services like Sonarr, Radarr, Jellyfin, qBittorrent, Prowlarr, and more.</p>
-          <ul>
-            <li>Built around real self-hosted automation workflows</li>
-            <li>Python-based integration layer with practical deployment in mind</li>
-            <li>Strong example of useful agent-era infrastructure</li>
-          </ul>
-          <a href="https://github.com/CT4nk3r/arrstack-mcp" target="_blank" rel="noreferrer">View repository</a>
-        </article>
-
-        <article class="card">
-          <h3>PerplexityPilot</h3>
-          <p>A VS Code extension for Perplexity-powered inline completions, edit actions, and lightweight coding assistance.</p>
-          <ul>
-            <li>Focused on coding flow instead of chat-first UX</li>
-            <li>Editor tooling with model switching and practical interaction design</li>
-            <li>Built to feel lightweight inside everyday development work</li>
-          </ul>
-          <a href="https://github.com/CT4nk3r/PerplexityPilot" target="_blank" rel="noreferrer">View repository</a>
-        </article>
-
-        <article class="card">
-          <h3>QRCrafter</h3>
-          <p>A privacy-first QR generator and decoder for mobile, web, and desktop.</p>
-          <ul>
-            <li>Built to avoid tracking-heavy QR tools and proxy links</li>
-            <li>Cross-platform product with a clear reason to exist</li>
-            <li>Offline-first generation and decoding</li>
-          </ul>
-          <a href="https://github.com/CT4nk3r/QRCrafter" target="_blank" rel="noreferrer">View repository</a>
-        </article>
+        {{ range .Params.featured }}
+          <article class="card">
+            <h3>{{ .name }}</h3>
+            <p>{{ .summary }}</p>
+            <ul>
+              {{ range .bullets }}
+                <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+            <a href="{{ .url }}" target="_blank" rel="noreferrer">View repository</a>
+          </article>
+        {{ end }}
       </div>
     </section>
 
@@ -272,40 +248,27 @@
       <p class="eyebrow">Open source</p>
       <h2>Forks, upstream fixes, and practical extensions.</h2>
       <div class="stack">
-        <article class="item">
-          <h3>lgogdownloader</h3>
-          <p>Extended my fork with terminal UI work and built automation around it to maintain a complete backup of my GOG library inside a self-hosted GameVault setup on my home server.</p>
-        </article>
-        <article class="item">
-          <h3>WinAppDriver</h3>
-          <p>Investigated and documented a concrete UI Recorder issue around double-click and context-click behavior, then proposed an upstream fix.</p>
-        </article>
-        <article class="item">
-          <h3>Other upstream work</h3>
-          <p>Smaller contributions include improvements and fixes around tools like opencode-mobile and claudian.</p>
-        </article>
+        {{ range .Params.opensource }}
+          <article class="item">
+            <h3>{{ .name }}</h3>
+            <p>{{ .summary }}</p>
+          </article>
+        {{ end }}
       </div>
     </section>
 
     <section id="enterprise">
       <p class="eyebrow">Enterprise</p>
       <h2>Internal platforms, shared tooling, and safer engineering flows.</h2>
-      <p class="lead">
-        In enterprise environments I have worked on internal developer tooling, AI-assisted workflows,
-        automation, and platform-facing engineering improvements used across teams. That included
-        contributing to shared tools, improving internal integrations, tightening documentation and
-        process flows, and helping make internal systems easier to operate, extend, and trust.
-        The common thread was reducing manual work, improving developer experience, and making
-        internal workflows more reliable and repeatable.
-      </p>
+      <p class="lead">{{ .Params.enterprise }}</p>
     </section>
 
     <section id="contact">
       <p class="eyebrow">Contact</p>
       <h2>Find me where the work happens.</h2>
       <div class="contact">
-        <a href="https://github.com/CT4nk3r" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:ct4nk3r@gmail.com">Email</a>
+        <a href="{{ .Params.github }}" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="mailto:{{ .Params.email }}">Email</a>
       </div>
     </section>
   </main>
