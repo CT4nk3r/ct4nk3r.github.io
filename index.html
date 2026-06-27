@@ -7,16 +7,18 @@
   <meta name="description" content="AI tooling, automation, self-hosted systems, and practical open-source software.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f1e8;
-      --paper: #fffdf8;
-      --ink: #171717;
-      --muted: #5f5b54;
-      --line: #d9cfbf;
-      --accent: #136f63;
-      --max: 62rem;
+      --bg: #0a0a0b;
+      --surface: #121214;
+      --surface-2: #17181b;
+      --ink: #f2f2f0;
+      --muted: #a6a7ad;
+      --line: rgba(255, 255, 255, 0.09);
+      --accent: #8bd3c7;
+      --accent-2: #5aa89a;
+      --max: 68rem;
     }
 
     * {
@@ -29,7 +31,9 @@
 
     body {
       margin: 0;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(139, 211, 199, 0.08), transparent 28rem),
+        linear-gradient(180deg, #0a0a0b 0%, #0e1012 100%);
       color: var(--ink);
       font: 16px/1.7 "IBM Plex Sans", "Segoe UI", sans-serif;
     }
@@ -41,80 +45,105 @@
     main {
       width: min(calc(100% - 2rem), var(--max));
       margin: 0 auto;
-      padding: 2rem 0 4rem;
-    }
-
-    header {
-      padding: 4rem 0 2rem;
-      border-bottom: 1px solid var(--line);
+      padding: 1.25rem 0 4rem;
     }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem 1.25rem;
-      margin-bottom: 3rem;
-      color: var(--muted);
-      font-size: 0.95rem;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 0 3rem;
     }
 
-    nav a {
+    .nav-brand {
+      color: var(--muted);
+      font: 500 0.82rem/1 "IBM Plex Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       text-decoration: none;
     }
 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .project-link:hover,
+    .contact a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 2rem 0 3rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font: 500 0.78rem/1 "IBM Plex Mono", monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
     h1, h2, h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
       margin: 0;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
     }
 
     h1 {
-      font-size: clamp(2.4rem, 8vw, 5rem);
-      max-width: 12ch;
+      max-width: 11ch;
+      font-size: clamp(2.3rem, 7vw, 5.6rem);
+      font-weight: 600;
       margin-bottom: 1rem;
     }
 
     h2 {
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      margin-bottom: 0.85rem;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 600;
+      margin-bottom: 0.9rem;
     }
 
     h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .eyebrow {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin: 0 0 0.85rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
     }
 
     .lead {
-      max-width: 44rem;
-      font-size: 1.08rem;
-      color: var(--muted);
+      max-width: 42rem;
       margin: 0 0 1.5rem;
+      color: var(--muted);
+      font-size: 1.06rem;
     }
 
-    .meta {
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.6rem;
       margin: 0;
       padding: 0;
       list-style: none;
-      color: var(--muted);
     }
 
-    .meta li {
-      padding: 0.25rem 0.7rem;
+    .hero-meta li {
+      padding: 0.3rem 0.7rem;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: var(--paper);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      font-size: 0.93rem;
     }
 
     section {
@@ -122,20 +151,33 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .section-copy {
+      max-width: 44rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
       gap: 1rem;
-      margin-top: 1.25rem;
+      margin-top: 1.4rem;
+    }
+
+    .card,
+    .item,
+    .contact a {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+      border: 1px solid var(--line);
+      border-radius: 1rem;
     }
 
     .card {
-      background: var(--paper);
-      border: 1px solid var(--line);
       padding: 1.15rem;
     }
 
-    .card p {
+    .card p,
+    .item p {
       margin: 0;
       color: var(--muted);
     }
@@ -150,49 +192,48 @@
       margin-top: 0.45rem;
     }
 
-    .card a {
+    .project-link {
       display: inline-block;
       margin-top: 1rem;
-      text-decoration: none;
       color: var(--accent);
+      text-decoration: none;
       font-weight: 600;
     }
 
     .stack {
       display: grid;
       gap: 1rem;
-      margin-top: 1.25rem;
+      margin-top: 1.4rem;
     }
 
     .item {
-      background: var(--paper);
-      border-left: 4px solid var(--accent);
-      padding: 1rem 1rem 1rem 1.1rem;
-    }
-
-    .item p {
-      margin: 0.35rem 0 0;
-      color: var(--muted);
+      padding: 1rem 1.1rem;
     }
 
     .contact {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.85rem;
-      margin-top: 1.25rem;
+      gap: 0.9rem;
+      margin-top: 1.4rem;
     }
 
     .contact a {
       text-decoration: none;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 0.85rem 1rem;
+      padding: 0.95rem 1rem;
+      min-width: 11rem;
     }
 
-    .contact a:hover,
-    nav a:hover,
-    .card a:hover {
-      color: var(--accent);
+    .contact-label {
+      display: block;
+      color: var(--muted);
+      font: 500 0.78rem/1 "IBM Plex Mono", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+
+    .contact-value {
+      font-weight: 600;
     }
 
     @media (max-width: 640px) {
@@ -200,29 +241,33 @@
         width: min(calc(100% - 1.25rem), var(--max));
       }
 
-      header {
-        padding-top: 2.25rem;
+      nav {
+        padding-bottom: 2rem;
       }
     }
   </style>
 </head>
 <body>
   <main>
-    <header>
-      <nav>
+    <nav>
+      <a class="nav-brand" href="https://github.com/CT4nk3r" target="_blank" rel="noreferrer">CT4nk3r</a>
+      <div class="nav-links">
         <a href="#work">Work</a>
         <a href="#opensource">Open source</a>
         <a href="#enterprise">Enterprise</a>
         <a href="#contact">Contact</a>
-      </nav>
-      <p class="eyebrow">AI tooling, automation, and open-source projects with real utility.</p>
-      <h1>CT4nk3r</h1>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">CT4nk3r</p>
+      <h1>AI tooling, automation, and software with real utility.</h1>
       <p class="lead">
         I build developer tools, AI-assisted workflows, and practical software around systems I actually use.
-        The projects I care about most usually sit somewhere between editor tooling, automation,
+        The work I care about most usually lives somewhere between editor tooling, automation,
         self-hosted infrastructure, and product-minded side projects.
       </p>
-      <ul class="meta">
+      <ul class="hero-meta">
         <li>Veszprem, Hungary</li>
         <li>Python / TypeScript / Kotlin</li>
         <li>AI tooling / automation / self-hosted systems</li>
@@ -231,7 +276,7 @@
 
     <section id="work">
       <p class="eyebrow">Selected work</p>
-      <h2>Original projects worth opening first.</h2>
+      <h2>Projects worth opening first.</h2>
       <div class="grid">
         <article class="card">
           <h3>arrstack-mcp</h3>
@@ -241,7 +286,7 @@
             <li>Python-based integration layer with practical deployment in mind</li>
             <li>Strong example of useful agent-era infrastructure</li>
           </ul>
-          <a href="https://github.com/CT4nk3r/arrstack-mcp" target="_blank" rel="noreferrer">View repository</a>
+          <a class="project-link" href="https://github.com/CT4nk3r/arrstack-mcp" target="_blank" rel="noreferrer">View repository</a>
         </article>
 
         <article class="card">
@@ -252,7 +297,7 @@
             <li>Editor tooling with model switching and practical interaction design</li>
             <li>Built to feel lightweight inside everyday development work</li>
           </ul>
-          <a href="https://github.com/CT4nk3r/PerplexityPilot" target="_blank" rel="noreferrer">View repository</a>
+          <a class="project-link" href="https://github.com/CT4nk3r/PerplexityPilot" target="_blank" rel="noreferrer">View repository</a>
         </article>
 
         <article class="card">
@@ -263,7 +308,7 @@
             <li>Cross-platform product with a clear reason to exist</li>
             <li>Offline-first generation and decoding</li>
           </ul>
-          <a href="https://github.com/CT4nk3r/QRCrafter" target="_blank" rel="noreferrer">View repository</a>
+          <a class="project-link" href="https://github.com/CT4nk3r/QRCrafter" target="_blank" rel="noreferrer">View repository</a>
         </article>
       </div>
     </section>
@@ -289,8 +334,8 @@
 
     <section id="enterprise">
       <p class="eyebrow">Enterprise</p>
-      <h2>Internal platforms, shared tooling, and safer engineering flows.</h2>
-      <p class="lead">
+      <h2>Shared tooling, internal platforms, and safer workflows.</h2>
+      <p class="section-copy">
         In enterprise environments I have worked on internal developer tooling, AI-assisted workflows,
         automation, and platform-facing engineering improvements used across teams. That included
         contributing to shared tools, improving internal integrations, tightening documentation and
@@ -302,10 +347,16 @@
 
     <section id="contact">
       <p class="eyebrow">Contact</p>
-      <h2>Find me where the work happens.</h2>
+      <h2>Find me where work happens.</h2>
       <div class="contact">
-        <a href="https://github.com/CT4nk3r" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:ct4nk3r@gmail.com">Email</a>
+        <a href="https://github.com/CT4nk3r" target="_blank" rel="noreferrer">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">CT4nk3r</span>
+        </a>
+        <a href="mailto:ct4nk3r@gmail.com">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">ct4nk3r@gmail.com</span>
+        </a>
       </div>
     </section>
   </main>

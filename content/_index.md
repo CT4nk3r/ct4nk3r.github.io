@@ -4,8 +4,9 @@ description: "AI tooling, automation, self-hosted systems, and practical open-so
 location: "Veszprem, Hungary"
 email: "ct4nk3r@gmail.com"
 github: "https://github.com/CT4nk3r"
-tagline: "AI tooling, automation, and open-source projects with real utility."
-intro: "I build developer tools, AI-assisted workflows, and practical software around systems I actually use. The projects I care about most usually sit somewhere between editor tooling, automation, self-hosted infrastructure, and product-minded side projects."
+alias: "CT4nk3r"
+headline: "AI tooling, automation, and software with real utility."
+intro: "I build developer tools, AI-assisted workflows, and practical software around systems I actually use. The work I care about most usually lives somewhere between editor tooling, automation, self-hosted infrastructure, and product-minded side projects."
 enterprise: "In enterprise environments I have worked on internal developer tooling, AI-assisted workflows, automation, and platform-facing engineering improvements used across teams. That included contributing to shared tools, improving internal integrations, tightening documentation and process flows, and helping make internal systems easier to operate, extend, and trust. The common thread was reducing manual work, improving developer experience, and making internal workflows more reliable and repeatable."
 featured:
   - name: "arrstack-mcp"
